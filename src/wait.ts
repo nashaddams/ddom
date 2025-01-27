@@ -5,7 +5,7 @@ export type RetryOptions = {
   /**
    * Maximum retry attempts.
    *
-   * @default {1}
+   * @default {10}
    */
   maxAttempts?: number;
   /**
