@@ -8,6 +8,7 @@ import { JSDOM } from "jsdom";
  * <!DOCTYPE html>
  * <html>
  *   <body>
+ *     <div id="root"></div>
  *   </body>
  * </html>
  * ```
@@ -16,6 +17,7 @@ export const DEFAULT_HTML: ConstructorParameters<typeof JSDOM>[0] = `
   <!DOCTYPE html>
   <html>
     <body>
+      <div id="root"></div>
     </body>
   </html>
 `;

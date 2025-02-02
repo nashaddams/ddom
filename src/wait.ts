@@ -28,8 +28,9 @@ export type RetryOptions = {
  *
  * @example Wait for the root to be rendered
  * ```ts
- * createRoot(document.body).render(<Counter initialCount={5} />);
- * await waitFor(() => assertGreater(document.body.children.length, 0));
+ * const root = document.getElementById("root")!;
+ * createRoot(root).render(<Counter initialCount={5} />);
+ * await waitFor(() => assertGreater(root.children.length, 0));
  * ```
  *
  * @typeParam T The return type of the function to retry and returned promise.

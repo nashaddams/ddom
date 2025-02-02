@@ -50,7 +50,7 @@ describe("counter", () => {
   });
 
   it("should render and interact with a react component", async () => {
-    const root = document.body;
+    const root = document.getElementById("root")!;
     assertEquals(root.children.length, 0);
 
     createRoot(root).render(<Counter initialCount={4711} />);
