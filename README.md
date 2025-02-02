@@ -64,4 +64,19 @@ describe("counter", () => {
 });
 ```
 
+### `JSDOM` only
+
+If you prefer to only add [`JSDOM`](https://github.com/jsdom/jsdom) as a
+dependency, you can register the DOM globals manually:
+
+```ts
+// @ts-types="npm:@types/jsdom@21.1.7"
+import { JSDOM } from "npm:jsdom@26.0.0";
+
+const dom = new JSDOM(`<!-- HTML -->`);
+
+(globalThis as any).window = dom.window;
+(globalThis as any).document = dom.window.document;
+```
+
 See [the docs](https://jsr.io/@nashaddams/ddom/doc) for further details.
