@@ -2,7 +2,7 @@
 import { JSDOM } from "jsdom";
 
 /**
- * Default JSDOM `html` parameter for {@linkcode registerDomGlobals}.
+ * Default JSDOM `html` parameter for {@linkcode registerDOM}.
  *
  * ```html
  * <!DOCTYPE html>
@@ -32,7 +32,7 @@ export const DEFAULT_HTML: ConstructorParameters<typeof JSDOM>[0] = `
  * @param {JSDOM} dom [JSDOM](https://github.com/jsdom/jsdom#jsdom-object-api) instance (default `html` parameter: {@linkcode DEFAULT_HTML})
  * @returns {JSDOM} [JSDOM](https://github.com/jsdom/jsdom#jsdom-object-api) instance
  */
-export function registerDomGlobals(
+export function registerDOM(
   dom: JSDOM = new JSDOM(DEFAULT_HTML),
 ): JSDOM {
   const window = dom.window;
@@ -53,7 +53,7 @@ export function registerDomGlobals(
  * - `globalThis.window` or `window` => `undefined`
  * - `globalThis.document` or `document` => `undefined`
  */
-export function unregisterDomGlobals(): void {
+export function unregisterDOM(): void {
   // deno-lint-ignore no-explicit-any
   (globalThis as any).window = undefined;
   // deno-lint-ignore no-explicit-any

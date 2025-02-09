@@ -33,8 +33,8 @@ import { afterEach, beforeEach, describe, it } from "@std/testing/bdd";
 import { assertEquals, assertGreater } from "@std/assert";
 import {
   getByTestId,
-  registerDomGlobals,
-  unregisterDomGlobals,
+  registerDOM,
+  unregisterDOM,
   waitFor,
 } from "@nashaddams/ddom";
 import { createRoot } from "react-dom/client";
@@ -42,11 +42,11 @@ import { Counter } from "./counter.tsx";
 
 describe("counter", () => {
   beforeEach(() => {
-    registerDomGlobals();
+    registerDOM();
   });
 
   afterEach(() => {
-    unregisterDomGlobals();
+    unregisterDOM();
   });
 
   it("should render and interact with a react component", async () => {

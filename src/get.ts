@@ -6,7 +6,7 @@
  *
  * @example Get an element
  * ```ts
- * registerDomGlobals(
+ * registerDOM(
  *   new JSDOM(`
  *     <!DOCTYPE html>
  *     <html>

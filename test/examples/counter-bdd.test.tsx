@@ -1,21 +1,16 @@
 import { afterEach, beforeEach, describe, it } from "@std/testing/bdd";
 import { assertEquals, assertGreater } from "@std/assert";
 import { createRoot } from "react-dom/client";
-import {
-  getByTestId,
-  registerDomGlobals,
-  unregisterDomGlobals,
-  waitFor,
-} from "../../mod.ts";
+import { getByTestId, registerDOM, unregisterDOM, waitFor } from "../../mod.ts";
 import { Counter } from "./counter.tsx";
 
 describe("counter (bdd)", () => {
   beforeEach(() => {
-    registerDomGlobals();
+    registerDOM();
   });
 
   afterEach(() => {
-    unregisterDomGlobals();
+    unregisterDOM();
   });
 
   it("should render and interact with a react component", async () => {

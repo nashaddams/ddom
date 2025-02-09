@@ -1,9 +1,9 @@
 import { assertEquals, assertGreater } from "@std/assert";
 import { createRoot } from "react-dom/client";
-import { getByTestId, registerDomGlobals, waitFor } from "../../mod.ts";
+import { getByTestId, registerDOM, waitFor } from "../../mod.ts";
 import { Counter } from "./counter.tsx";
 
-registerDomGlobals();
+registerDOM();
 
 Deno.test("should render and interact with a react component", async () => {
   const root = document.getElementById("root")!;
