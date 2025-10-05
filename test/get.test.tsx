@@ -1,9 +1,9 @@
 // @ts-types="npm:@types/jsdom@21.1.7"
 import { JSDOM } from "jsdom";
 import { assertEquals, assertThrows } from "@std/assert";
-import { getByTestId, registerDOM } from "../mod.ts";
+import { DDOM, getByTestId } from "../mod.ts";
 
-registerDOM(
+DDOM.register(
   new JSDOM(`
     <!DOCTYPE html>
     <html>

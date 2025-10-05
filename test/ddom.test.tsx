@@ -1,16 +1,16 @@
 import { assert, assertEquals } from "@std/assert";
-import { registerDOM, unregisterDOM } from "../mod.ts";
+import { DDOM } from "../mod.ts";
 
 Deno.test("should register and unregister dom globals", () => {
   assertEquals(globalThis.window, undefined);
   assertEquals(globalThis.document, undefined);
 
-  registerDOM();
+  DDOM.register();
 
   assert(globalThis.window);
   assert(globalThis.document);
 
-  unregisterDOM();
+  DDOM.unregister();
 
   assertEquals(globalThis.window, undefined);
   assertEquals(globalThis.document, undefined);

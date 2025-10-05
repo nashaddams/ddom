@@ -29,38 +29,23 @@ export function Counter({ initialCount }: { initialCount: number }) {
 ```
 
 ```tsx
-import { afterEach, beforeEach, describe, it } from "@std/testing/bdd";
-import { assertEquals, assertGreater } from "@std/assert";
-import {
-  getByTestId,
-  registerDOM,
-  unregisterDOM,
-  waitFor,
-} from "@nashaddams/ddom";
+import { DDOM, getByTestId, waitFor } from "@nashaddams/ddom";
 import { createRoot } from "react-dom/client";
 import { Counter } from "./counter.tsx";
 
-describe("counter", () => {
-  beforeEach(() => {
-    registerDOM();
-  });
+Deno.test("should render and interact with a react component", async () => {
+  using _ = DDOM.register();
 
-  afterEach(() => {
-    unregisterDOM();
-  });
+  const root = document.getElementById("root")!;
+  assertEquals(root.children.length, 0);
 
-  it("should render and interact with a react component", async () => {
-    const root = document.getElementById("root")!;
-    assertEquals(root.children.length, 0);
+  createRoot(root).render(<Counter initialCount={4711} />);
+  await waitFor(() => assertGreater(root.children.length, 0));
 
-    createRoot(root).render(<Counter initialCount={4711} />);
-    await waitFor(() => assertGreater(root.children.length, 0));
+  const count = getByTestId("count");
 
-    const count = getByTestId("count");
-
-    getByTestId<HTMLButtonElement>("increment").click();
-    await waitFor(() => assertEquals(count.textContent, "4712"));
-  });
+  getByTestId<HTMLButtonElement>("increment").click();
+  await waitFor(() => assertEquals(count.textContent, "4712"));
 });
 ```
 
@@ -70,8 +55,8 @@ If you prefer to only add [`JSDOM`](https://github.com/jsdom/jsdom) as a
 dependency, you can register the DOM globals manually:
 
 ```ts
-// @ts-types="npm:@types/jsdom@21.1.7"
-import { JSDOM } from "npm:jsdom@26.0.0";
+// @ts-types="npm:@types/jsdom@27.0.0"
+import { JSDOM } from "npm:jsdom@27.0.0";
 
 const dom = new JSDOM(`<!-- HTML -->`);
 

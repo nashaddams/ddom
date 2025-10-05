@@ -8,7 +8,7 @@ export function Counter({ initialCount }: { initialCount: number }) {
     <div>
       <span>Current value:&nbsp;</span>
       <span data-testid="count">{count}</span>
-      <button data-testid="increment" onClick={increment}>
+      <button type="button" data-testid="increment" onClick={increment}>
         Increment
       </button>
     </div>

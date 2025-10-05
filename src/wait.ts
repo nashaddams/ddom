@@ -42,10 +42,7 @@ export async function waitFor<T>(
   fn: (() => Promise<T>) | (() => T),
   retryOptions?: RetryOptions,
 ): Promise<T> {
-  const {
-    maxAttempts = 10,
-    delay = 100,
-  } = retryOptions ?? {};
+  const { maxAttempts = 10, delay = 100 } = retryOptions ?? {};
 
   let attempt = 0;
 

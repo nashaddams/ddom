@@ -1,29 +1,31 @@
 {
   "name": "@nashaddams/ddom",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "exports": "./mod.ts",
   "tasks": {
-    "test": "deno test -RE --coverage=cov",
-    "coverage:lcov": "deno coverage --exclude=test --lcov cov > cov.lcov",
-    "coverage:html": "deno coverage --html --exclude=test cov",
-    "coverage:console": "deno coverage --exclude=test cov",
-    "coverage": "deno task coverage:lcov && deno task coverage:html && deno task coverage:console",
+    "lint": "deno lint && deno fmt --check && deno publish --dry-run --allow-dirty",
+    "test": "deno test -RE --coverage",
+    "coverage:report": "deno run -RN jsr:@std/http/file-server coverage/html",
     "doc": "deno doc --html mod.ts && deno doc --lint mod.ts",
-    "clean": "rm -rf cov.lcov cov docs"
+    "doc:report": {
+      "command": "deno run -RN jsr:@std/http/file-server docs",
+      "dependencies": ["doc"]
+    },
+    "clean": "rm -rf coverage docs"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "https://esm.sh/react@19.0.0?target=es2024",
+    "jsxImportSource": "https://esm.sh/react@19.2.0?target=es2024",
     "lib": ["deno.ns", "dom"]
   },
   "imports": {
-    "@std/assert": "jsr:@std/assert@1.0.11",
-    "@std/async": "jsr:@std/async@1.0.10",
-    "@std/testing": "jsr:@std/testing@1.0.9",
-    "jsdom": "npm:jsdom@26.0.0",
-    "react": "https://esm.sh/react@19.0.0?target=es2024",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client?target=es2024"
+    "@std/assert": "jsr:@std/assert@1.0.14",
+    "@std/async": "jsr:@std/async@1.0.14",
+    "@std/testing": "jsr:@std/testing@1.0.15",
+    "jsdom": "npm:jsdom@27.0.0",
+    "react": "https://esm.sh/react@19.2.0?target=es2024",
+    "react-dom/client": "https://esm.sh/react-dom@19.2.0/client?target=es2024"
   },
   "publish": {
     "include": [
